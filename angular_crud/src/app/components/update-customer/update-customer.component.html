@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <h2>Update Customer</h2>
+    <form [formGroup]="updateCustomerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group" >
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="form-control" formControlName="name">
+        <div *ngIf="updateCustomerForm.get('name')?.invalid && (updateCustomerForm.get('name')?.touched 
+                || updateCustomerForm.get('name')?.dirty)" class="text-danger">
+            <small>Name is required.</small>
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="form-control" formControlName="email">
+        <div *ngIf="updateCustomerForm.get('email')?.invalid && (updateCustomerForm.get('email')?.touched 
+              || updateCustomerForm.get('email')?.dirty)" class="text-danger">
+            <small *ngIf="updateCustomerForm.get('email')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="updateCustomerForm.get('email')?.errors?.['email']">Email must be a valid email address.</small>
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" class="form-control" formControlName="phone">
+        <div *ngIf="updateCustomerForm.get('phone')?.invalid && (updateCustomerForm.get('phone')?.touched 
+            || updateCustomerForm.get('phone')?.dirty)" class="text-danger">
+            <small>Phone is required.</small>
+          </div>
+      </div>
+  
+      <button type="submit" class="btn btn-sm btn-primary mt-3" [disabled]="updateCustomerForm.invalid">Update Customer</button>
+    </form>
+  </div>
+  
